@@ -1,29 +1,54 @@
-$(function(){
+// -------------------------mobile-menu---------------------------
+const burger = document.querySelector('.button-burger');
+const navigation = document.querySelector('.header__nav-list');
+const navLink = document.querySelectorAll('.header__nav-link');
+const closeButton = document.querySelector('.button-close');
 
-	$('.top-slider').slick({
-		arrows: false,
-		dots: true,
-		autoplay: true
+	burger.addEventListener('click', function(){
+		navigation.classList.add('active');
 	});
 
-	$('.button-burger').on('click', function(){
-		$('.header__nav-list').addClass('active');
-	});
+	closeButton.addEventListener('click', function(){
+		navigation.classList.remove('active');
+	});	
 
-	$('.button-close, .header__nav-link').on('click', function(){
-		let win = $(window).width();
+	for (let i = 0; i < navLink.length; i++){
+		navLink[i].addEventListener('click', function() {
+			navigation.classList.remove('active');
+		});
+	}
 
-		$('.header__nav-list').removeClass('active');	
-		if(win < 768){
-			$('.header__nav-list').removeClass('active');
-		}
-	});
+// ------------------------swiper-slider--------------------------
+const swiper = new Swiper('.swiper-container', {
+  	loop: true,
+  	centeredSlides: true,
+  	autoplay: {
+		delay: 3000,
+  	},
 
-	$('a[href^="#"]').click(function(){
-		var target = $(this).attr('href');
-		$('html, body').animate({
-			scrollTop: $(target).offset().top
-		},800);
-	});
+  // If we need pagination
+  	pagination: {
+    	el: '.swiper-pagination',
+    	type: 'bullets',
+    	clickable: true
+  	},
 });
+
+// ----------------------smooth scrolling-------------------------
+const links = document.querySelectorAll('a[href^="#"]');
+
+	for(let i = 0; i < links.length; i++){
+		links[i].addEventListener('click', function(event){
+			event.preventDefault();
+			const blockId = event.target.getAttribute('href').substr(1);
+
+			document.getElementById(blockId).scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		});
+	};
+
+
+
 
