@@ -1850,6 +1850,7 @@ ul {
   }
   .logo-registration {
     width: 100px;
+    height: auto;
   }
   .description {
     padding-bottom: 50px;
@@ -2022,7 +2023,7 @@ ul {
     max-width: 100%;
   }
   .logo-registration {
-    bottom: -70px;
+    bottom: -40px;
   }
   .description {
     padding-top: 20px;
@@ -2213,7 +2214,7 @@ ul {
   .logo-registration {
     width: 70px;
     right: 15px;
-    bottom: -30px;
+    bottom: 15px;
   }
   .description__content-left {
     width: 90%;
